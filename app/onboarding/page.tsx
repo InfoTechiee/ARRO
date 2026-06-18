@@ -154,14 +154,10 @@ export default function OnboardingPage() {
       }
 
       // Step 6 shows loading — trigger real roadmap generation
-      setStep(6);
-      try {
-        await fetch("/api/roadmap/generate", { method: "POST" });
-      } catch {
-        // Non-fatal: tasks will be generated lazily on first dashboard visit
-      }
-      await new Promise((r) => setTimeout(r, 1500)); // Minimum loading UX
-      setStep(7);
+     setStep(6);
+await new Promise((r) => setTimeout(r, 2000));
+setStep(7);
+      
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
       setStep(5);
